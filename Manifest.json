@@ -1,27 +1,32 @@
 {
-    "manifest_version": 2,
-    "name": "Image Classification Extension",
-    "version": "1.0",
-    "description": "An extension that classifies images",
-    "permissions": [
-      "activeTab"
-    ],
-    "browser_action": {
-      "default_icon": {
-        "48": "icon.png"
-      },
-      "default_popup": "popup.html"
-    },
-    "icons": {
+  "manifest_version": 2,
+  "name": "Image Classification Extension",
+  "version": "1.0",
+  "description": "An extension that classifies images",
+  "browser_action": {
+    "default_icon": {
       "48": "icon.png"
     },
-    "content_security_policy": {
-      "extension_pages": "script-src 'self'; object-src 'self'"
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "your-opera-extension-id-if-applicable"
     },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
+    "edge": {
+      "browser_action_next_to_addressbar": false
+    }
   }
+}
